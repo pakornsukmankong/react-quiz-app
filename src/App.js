@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import { createContext, useState } from 'react';
 import './App.css';
+import FooterComponent from './components/FooterComponent';
+import Menu from './components/Menu';
+import Quiz from './components/Quiz';
+import Score from './components/Score';
+
+export const DataContext = createContext()
 
 function App() {
+  const [appState,setAppState] = useState("menu")
+  const [score,setScore] = useState(0)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataContext.Provider value={{appState,setAppState,score,setScore}}>
+      <div className="container w-50 mt-5 px-5 py-1 bg-light d-md-flex flex-md-column align-items-md-center rounded-5">
+        <h1>Quiz App</h1>
+        {appState === "menu" && <Menu/>}
+        {appState === "quiz" && <Quiz/>}
+        {appState === "score" && <Score/>}
+      </div>
+      <div className="fixed-bottom">
+        <FooterComponent/>
+      </div>
+    </DataContext.Provider>
   );
 }
 
