@@ -5,7 +5,7 @@ const FooterComponent = () => {
         className="text-center text-light p-3"
         style={{backgroundColor: "gray"}}
       >
-        &copy; {new Date().getFullYear()} Copyright : Pakorn Sukmankong1
+        &copy; {new Date().getFullYear()} Copyright : Pakorn Sukmankong2
       </div>
     </footer>
   );
